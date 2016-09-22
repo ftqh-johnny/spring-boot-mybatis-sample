@@ -12,13 +12,9 @@ import com.ft.turorial.spring.boot.domain.User;
 @Mapper
 public interface UserMapper {
 	
-	@Results(id = "User", value = {
-			  @Result(property = "userName", column = "user_name")
-			})
 	@Select("select * from user where id= #{id,jdbcType=INTEGER} ")
 	User findOne(@Param("id")int id);
 	
-	@ResultMap(value = "User")
 	@Select("select * from user where user_name= #{userName,jdbcType=VARCHAR} ")
 	User findByUserName(@Param("userName")String userName);
 	
